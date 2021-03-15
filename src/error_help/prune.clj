@@ -6,3 +6,10 @@
   irrelevant errors/messages. Returns a
   non-nested list"
   [xs])
+(defn process-output
+  "Processes the output of the compiling
+  shell command (stderr). Assume the stderr is valid JSON."
+  [output]
+  (->> output
+       :err
+       json/read-json))
