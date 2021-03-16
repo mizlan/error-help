@@ -1,5 +1,7 @@
 (ns error-help.prune
-  (:require [clojure.data.json :as json]))
+  (:require [clojure.data.json :as json]
+            [error-help.collect :as collect]
+            [clojure.pprint :as pp]))
 
 (defn prune-errors
   "Takes a JSON list and prunes out the
