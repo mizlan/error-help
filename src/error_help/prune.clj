@@ -11,6 +11,16 @@
         results (map (comp (partial = filepath) :file) locs)]
     (println results)
     (and results)))
+(defn is-relevant
+  "Determine if an error|message|note object is relevant,
+  by seeing if their locations are the actual source file"
+  [filepath obj]
+  (let [locs (:locations obj)]
+    (println "these are the locs" locs)
+    ;; using map here, but often just 1 location
+    (let [res (and (map (partial matches-location filepath) locs))]
+      (println "this is the res" res)
+      res)))
 (defn prune-errors
   "Takes a JSON list and prunes out the
   irrelevant errors/messages. Returns a
