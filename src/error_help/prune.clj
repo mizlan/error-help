@@ -21,11 +21,9 @@
     (let [res (and (map (partial matches-location filepath) locs))]
       (println "this is the res" res)
       res)))
+
 (defn prune-errors
   "Takes a JSON list and prunes out the
-  irrelevant errors/messages. Returns a
-  non-nested list"
-  [xs])
   irrelevant errors/messages. needs filepath to help determine
   if error messages are relevant. Returns a
   non-nested list where each element is shape
