@@ -16,10 +16,19 @@
   irrelevant errors/messages. Returns a
   non-nested list"
   [xs])
-(defn process-output
+  irrelevant errors/messages. needs filepath to help determine
+  if error messages are relevant. Returns a
+  non-nested list where each element is shape
+  {:kind <string> :message <string>}"
+  [filepath xs]
+  (if (empty? xs) []
+      (let [child-errors (prune-errors filepath (mapcat :children xs))]
+        (concat child-errors (filter (partial is-relevant filepath) xs)))))
+
+(defn output-to-map
   "Processes the output of the compiling
   shell command (stderr). Assume the stderr is valid JSON."
   [output]
-  (->> output
+  (-> output
        :err
-       json/read-json))
+       (json/read-str :key-fn keyword)))
