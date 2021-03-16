@@ -3,6 +3,10 @@
             [error-help.collect :as collect]
             [clojure.pprint :as pp]))
 
+(defn get-relevant-fields
+  [entry]
+  (dissoc entry :children))
+
 (defn matches-location
   "Check if all files in a location map correspond to
   `filepath`"
