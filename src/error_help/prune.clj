@@ -45,3 +45,12 @@
   (-> output
        :err
        (json/read-str :key-fn keyword)))
+
+(defn get-errors
+  [filepath]
+  (->> filepath
+       collect/compilation-output
+       output-to-map
+       (prune-errors filepath)
+       (map get-relevant-fields)
+       remove-notes))
