@@ -36,4 +36,4 @@
     :replacement
     (fn [matches]
       (let [var (second matches)]
-        "I could not find where you defined" (code-style var)))}])
+        (space-separate "I could not find where you defined" (code-style var))))}])
