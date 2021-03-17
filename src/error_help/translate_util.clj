@@ -1,4 +1,4 @@
-(ns error-help.translate
+(ns error-help.translate-util
   (:import
    [java.util.regex Pattern])
   (:require [clansi :refer [style]]

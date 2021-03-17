@@ -1,4 +1,4 @@
-(ns error-help.translate)
+(ns error-help.translations
 
 (def translators
   [{:label "Easier types"

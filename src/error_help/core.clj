@@ -1,6 +1,6 @@
 (ns error-help.core
   (:gen-class)
-  (:require [error-help.translate-util :refer [translate]]
+  (:require [error-help.translate :refer [translate-message]]
             [error-help.prune :as prune]))
 
 (defn -main
