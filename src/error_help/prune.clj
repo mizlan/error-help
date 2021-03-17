@@ -15,10 +15,9 @@
   "Check if all files in a location map correspond to
   `filepath`"
   [filepath locmap]
-  (let [locs (vals locmap)
-        results (map (comp (partial = filepath) :file) locs)]
-    (println results)
-    (and results)))
+  (let [locs (vals locmap)]
+    (every? (comp (partial = filepath) :file) locs)))
+
 (defn is-relevant
   "Determine if an error|message|note object is relevant,
   by seeing if their locations are the actual source file"
