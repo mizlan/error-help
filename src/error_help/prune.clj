@@ -23,10 +23,8 @@
   by seeing if their locations are the actual source file"
   [filepath obj]
   (let [locs (:locations obj)]
-    (println "these are the locs" locs)
-    ;; using map here, but often just 1 location
-    (let [res (and (map (partial matches-location filepath) locs))]
-      (println "this is the res" res)
+    ;; using every? here, but often just 1 location
+    (let [res (every? (partial matches-location filepath) locs)]
       res)))
 
 (defn prune-errors
