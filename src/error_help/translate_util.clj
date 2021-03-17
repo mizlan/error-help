@@ -1,8 +1,7 @@
 (ns error-help.translate-util
   (:import
    [java.util.regex Pattern])
-  (:require [clansi :refer [style]]
-            [jansi-clj.core :refer :all]
+  (:require [jansi-clj.core :refer :all]
             [clojure.string :as str]))
 
 ;; Thanks to https://github.com/AvisoNovate/pretty/blob/master/src/io/aviso/ansi.clj
@@ -24,7 +23,7 @@
 
 (defn code-style
   [s]
-  (style s :blue :bold))
+  (magenta s))
 
 (defn a-an
   "Conditionally use `a` or `an`. The English language sucks."
