@@ -7,6 +7,10 @@
   [entry]
   (dissoc entry :children))
 
+(defn remove-notes
+  [entries]
+  (remove #(= (:kind %) "note") entries))
+
 (defn matches-location
   "Check if all files in a location map correspond to
   `filepath`"
