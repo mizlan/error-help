@@ -69,3 +69,17 @@
     (fn [matches]
       (let [var (second matches)]
         "I could not find where you defined" (code-style var)))}])
+
+(defn translate
+  ([msg] (translate msg translators))
+  ([msg translation-dict]
+   (some #(let [pat (:pattern %)
+                sub-func (:replacement %)]
+            (some->> msg
+                     (re-find pat)
+                     sub-func))
+         translation-dict)))
+
+(def example-msg "'Int' was not declared in this scope; did you mean 'int'?")
+
+(println (translate example-msg))
