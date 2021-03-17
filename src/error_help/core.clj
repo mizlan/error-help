@@ -8,4 +8,6 @@
   (let [filepath (first args)]
     (println "input file: " filepath)
     (let [errors (prune/get-errors filepath)]
-      (map #(translate (:message %)) (errors)))))
+      (println "done getting" (count errors) "errors")
+      (run! println (map #(translate-message (:message %)) errors))
+      (shutdown-agents))))
