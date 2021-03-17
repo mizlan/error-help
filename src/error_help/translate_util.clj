@@ -31,13 +31,3 @@
   (if (re-find #"^\s*[aeiou]" (strip-ansi s))
     (str "an " s)
     (str "a " s)))
-
-(defn translate
-  ([msg] (translate msg translators))
-  ([msg translation-dict]
-   (some #(let [pat (:pattern %)
-                sub-func (:replacement %)]
-            (some->> msg
-                     (re-find pat)
-                     sub-func))
-         translation-dict)))

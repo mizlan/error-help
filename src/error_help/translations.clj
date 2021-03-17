@@ -1,4 +1,5 @@
 (ns error-help.translations
+  (:require [error-help.translate-util :refer :all]))
 
 (def translators
   [{:label "Easier types"
