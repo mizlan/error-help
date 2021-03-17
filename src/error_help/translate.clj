@@ -36,7 +36,3 @@
     (fn [matches]
       (let [var (second matches)]
         "I could not find where you defined" (code-style var)))}])
-
-(def example-msg "'Int' was not declared in this scope; did you mean 'int'?")
-
-(println (translate example-msg))
