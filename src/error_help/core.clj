@@ -1,7 +1,11 @@
 (ns error-help.core
-  (:gen-class))
+  (:gen-class)
+  (:require [error-help.translate-util :refer [translate]]
+            [error-help.prune :as prune]))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (let [filepath (first args)]
+    (println "input file: " filepath)
+    (let [errors (prune/get-errors filepath)]
+      (map #(translate (:message %)) (errors)))))
